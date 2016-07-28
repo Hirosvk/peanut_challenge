@@ -95,6 +95,8 @@ class ComputerTerminal
       if @input =~ /\^\d\d/
         self.move_cursor([@input[1].to_i, @input[2].to_i])
         @input = ""
+      elsif @input =~ /\^\d/
+        return
       else
         command = COMMANDS[@input]
         if command == :exit
@@ -165,12 +167,12 @@ class ComputerTerminal
   end
 
   def valid_char?(char)
-    char =~ /[^ \r\n\t\e\f]/
+    !(char =~ /[\r\n\t\e]/)
   end
 
 ## helper methods
   def is_space?(letter)
-    letter.nil? || letter == " "
+    letter.nil? || letter = " "
   end
 
 ## COMMANDS methods
