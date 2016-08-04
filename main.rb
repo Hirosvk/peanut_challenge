@@ -1,5 +1,6 @@
 require 'colorize'
 require 'io/console'
+require 'byebug'
 
 class ComputerTerminal
 
@@ -241,7 +242,7 @@ class ComputerTerminal
   end
 
   def is_space?(letter)
-    letter.nil? || letter = " "
+    letter.nil? || letter == " "
   end
 
   def reset_input
